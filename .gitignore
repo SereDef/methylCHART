@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+data/
+.pcn_venv/
+
+BLR_*

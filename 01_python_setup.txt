@@ -1,0 +1,21 @@
+# I need Python < 3.13
+
+# System default Python 3.13 is built with a very new NumPy (2.5.1).
+# SciPy 1.12.0 wheels for this combo don’t exist yet, so pip falls back to building 
+# from source, but The sdist build path is broken for this toolchain, causing a
+# NPY_F_CONTIGUOUS error.
+
+# Check existing python distributions on Midas
+ls /opt/software/*/bin/python*
+
+# Use 3.12 to build virtual env
+/opt/software/Miniforge3/bin/python3.12 -m venv ~/methylCHART/.pcn_venv
+
+source .pcn_venv/bin/activate
+pip install --upgrade pip
+pip install pcntoolkit
+
+## In RStudio ==================================================================
+library(reticulate)
+use_virtualenv("~/methylCHART/.pcn_venv", required = TRUE)
+py_config()
