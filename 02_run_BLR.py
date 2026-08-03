@@ -1,13 +1,24 @@
 import pandas as pd
 from pcntoolkit import NormData, BLR, BsplineBasisFunction, NormativeModel, plot_centiles, plot_qq
 
+seed = 73
+
+target_cpg = "cg00528572"
+
 # Read input data
-data = pd.read_csv("~/methylCHART/data/DNAm_data.csv")
+data1 = pd.read_csv(f"~/methylCHART/data/DNAm_data_{target_cpg}.csv")
 
 # Specify modes structure
 covariates = ["Age"]
-batch_effects = ["sex", "Array", "IDC"] # "Period"celltype unilife 
+batch_effects = ["sex", "Array"] # "IDC" "Period"celltype unilife 
 response_vars = ["cpg"]
+
+# do not account for for idc, rather downstream in the z scores -- velocity and what not
+# split 50-50 - but why do I need to use the test set with external data? 
+# birth age what to do? Bing remind to put in contact with N
+# https://www.ejwagenmakers.com/
+# https://github.com/opherdonchin 
+# https://www.biorxiv.org/content/10.64898/2026.02.17.706268v2.abstract
 
 # Create a NormData object from the dataframe
 norm_data = NormData.from_dataframe(
@@ -25,7 +36,7 @@ norm_data.coords
 norm_data.data_vars
 
 # Split
-train, test = norm_data.train_test_split() # default: 80/20
+train, test = norm_data.train_test_split(0.5, random_state=seed)
 
 # Inspect
 df_train = train.to_dataframe()
@@ -33,30 +44,8 @@ df_test  = test.to_dataframe()
 
 # ================ BLR ======================
 
-# Specify the regression model
-basic_blr = BLR(
-    name="bspline",
-    # We use a B-spline basis expansion for the mean, so the predicted mean is a 
-    # smooth function of the covariates
-    basis_function_mean=BsplineBasisFunction(degree=3, nknots=5),
-    # The variance is a function of the covariates
-    heteroskedastic=True
-)
-
-batch_blr = BLR(
-    name="batched",
-    # We use a B-spline basis expansion for the mean
-    basis_function_mean=BsplineBasisFunction(degree=3, nknots=5),
-    # The variance is a function of the covariates
-    heteroskedastic=True,
-    # Model the batch effects (Sex, Array)
-    fixed_effect=True, # Model offsets in the mean for each individual batch effect
-    fixed_effect_slope=True, # Model fixed effect in the slope of the mean for each individual batch effect
-    fixed_effect_var_slope=True, # Model fixed effect in the slope of the variance for each individual batch effect
-)
-
 warped_blr = BLR(
-    name="warped",
+    name="warpedBLR",
     # We use a B-spline basis expansion for the mean
     basis_function_mean=BsplineBasisFunction(degree=3, nknots=5),
     # The variance is a function of the covariates
@@ -77,23 +66,17 @@ def model_config(template, model_name, base_dir="/home/s.defina/methylCHART"):
       evaluate_model=True, # model fit metrics
       saveresults=True, # per-subject Z logp and centiles
       saveplots=True,
-      save_dir=f"{base_dir}/{model_name}",
+      save_dir=f"{base_dir}/results/{target_cpg}_{model_name}",
       inscaler="standardize", # "minmax", "robminmax", or "none"
       outscaler="standardize")
   return model
 
-model0 = model_config(template=basic_blr, model_name="BLR_simple")
-model0fit = model0.fit_predict(train, test)
-
-model1 = model_config(template=batch_blr, model_name="BLR_batches")
-model1fit =model1.fit_predict(train, test)
-
-model2 = model_config(template=warped_blr, model_name="BLR_warped")
-model2fit = model2.fit_predict(train, test)
+model = model_config(template=warped_blr, model_name="warpedBLR")
+modelfit = model.fit_predict(train, test)
 
 
 # Show the evaluation metrics from the train / test set
-print(round(model2fit.get_statistics_df().T, 5))
+print(round(train.get_statistics_df().T, 5))
 print(round(test.get_statistics_df().T, 5))
 
 

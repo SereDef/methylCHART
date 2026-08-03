@@ -3,8 +3,14 @@
 
 dnam_dir <- '~/GENR3/Methylation/Release4'
 
-target_cpg <- "cg05575921" # holy grail 
+target_cpg <- "cg00528572" #  Alex maternal aging
+  # "cg05575921" # holy grail of maternal smoking 
+
+
+
 normalization <- "Functional"
+
+output <- paste0('DNAm_data_',target_cpg,'.csv')
 
 genr <- haven::read_sav(file.path('data', 
                                   'DNAm_selection_file.sav'))
@@ -54,6 +60,7 @@ for (i in seq_len(nrow(subsets))) {
   }
   
   cli::cli_progress_step("Reading data", spinner = TRUE)
+  # cpg_data <- as.data.frame(data.table::fread(rds_path))[target_cpg, ]
   cpg_data <- readRDS(rds_path)[target_cpg, ]
   cli::cli_progress_done()
   
@@ -82,7 +89,11 @@ rm(subsets, cpg_data, already_set, has_match, idx,
 # Add covariate information
 covs <- haven::read_sav(file.path('data',
                                   'Family_GeneralData_Pregnancy_20251111.sav')) |>
-  dplyr::transmute(IDM, sex = haven::as_factor(GENDERPREG)) # 1 = boy 2 = girl
+  dplyr::transmute(IDM, 
+                   sex = haven::as_factor(GENDERPREG), # # 1 = boy 2 = girl
+                   mom_age = AGE_M_Birth, # years
+                   mom_age_bin = as.factor(ifelse(mom_age > 35, '> 35', '=< 35'))
+                   ) 
 
 outc <- haven::read_sav(file.path('data',
                                   'Mother_Smoking_Pregnancy_20260216.sav')) |>
@@ -96,11 +107,14 @@ data <- Reduce(function(x, y) merge(x, y, by = "IDM", all.x = TRUE),
 
 rm(outc, covs)
 
-write.csv(data, file.path('data', 'DNAm_data.csv')) 
+write.csv(data, file.path('data', output)) 
 
 # ==== Plots ===================================================================
 library(ggplot2)
 library(pastaDaGg)
+
+target_pheno  <- c("mom_age_bin", "mom_age") # "smoke"
+target_tag <- "mom_age"
 
 array_color_map <- c("450k" = "#FFC3CB", "EPICv1" = "#58aaa1", "EPICv2" = "#1c4b75")
 
@@ -125,20 +139,24 @@ trajectories <- spaghetti(data,  x="Age", y = "cpg", id="IDC", interactive = FAL
           color = "Array", # split_by = "Array",
           title = paste(target_cpg, "trajectories (Generation R)"))
 
-trajectories_smoking <- spaghetti(data,  x="Age", y = "cpg", id="IDC", interactive = FALSE, 
-                          color = "smoke", # split_by = "Array",
-                          title = paste(target_cpg, "trajectories (Generation R)"))
-
-trajectories_by_sex <- spaghetti(data,  x="Age", y = "cpg", id="IDC", interactive = FALSE, 
-                          color = "smoke", split_by = "sex",
-                          title = paste(target_cpg, "trajectories (Generation R)"))
-
-pdf(paste0(target_cpg,".pdf"), width = 12, height = 6)
+pdf(paste0(target_tag, '_', target_cpg,".pdf"), width = 12, height = 6)
 dens_by_period
 dens_by_array
 trajectories
-trajectories_smoking
-trajectories_by_sex
+for (pheno in target_pheno) {
+  traj_by <- spaghetti(data,  x="Age", y = "cpg", id="IDC", interactive = FALSE, 
+            color = pheno, 
+            title = paste(target_cpg, "trajectories (Generation R) by", pheno)) 
+  
+  if (is.numeric(data[[pheno]])) {
+    traj_by <- traj_by + scale_color_viridis_c(option = "magma")
+  }
+    
+  # spaghetti(data,  x="Age", y = "cpg", id="IDC", interactive = FALSE, 
+  #           color = target_pheno, split_by = "sex",
+  #           title = paste(target_cpg, "trajectories (Generation R)"))
+  print(traj_by)
+}
 dev.off()
 
 
