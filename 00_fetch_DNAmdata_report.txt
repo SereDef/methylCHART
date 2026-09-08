@@ -1,0 +1,75 @@
+── Period: Birth | Array: 450K ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+✔ Reading data [4m 39.6s]
+! cg21412456 missing in this file.
+ℹ tag: Cluster 15
+✔ Reading data [27s]
+Total n: 1393 | 1393 matched in selection file.
+
+── Period: Birth | Array: EPICv1 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg21412456 missing in this file.
+ℹ tag: Cluster 15
+✔ Reading data [36.7s]
+Total n: 1119 | 1119 matched in selection file.
+
+── Period: Age5y | Array: 450K ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg21412456 missing in this file.
+ℹ tag: Cluster 15
+✔ Reading data [9s]
+Total n: 491 | 491 matched in selection file.
+
+── Period: Age5y | Array: EPICv2 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg11945228, cg15845274, and cg21412456 missing in this file.
+ℹ tags: GPF (not at birth, yes in childhood), Cluster 11, and Cluster 15
+✔ Reading data [23.4s]
+Total n: 684 | 653 matched in selection file.
+
+── Period: Age9y | Array: 450K ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg21412456 missing in this file.
+ℹ tag: Cluster 15
+✔ Reading data [8.3s]
+Total n: 464 | 464 matched in selection file.
+
+── Period: Age9y | Array: EPICv2 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg11945228, cg15845274, and cg21412456 missing in this file.
+ℹ tags: GPF (not at birth, yes in childhood), Cluster 11, and Cluster 15
+✔ Reading data [1m 7.4s]
+Total n: 770 | 769 matched in selection file.
+
+── Period: Age13y | Array: EPICv2 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg11945228, cg15845274, and cg21412456 missing in this file.
+ℹ tags: GPF (not at birth, yes in childhood), Cluster 11, and Cluster 15
+✔ Reading data [1m 32.9s]
+Total n: 1196 | 1196 matched in selection file.
+
+── Period: Age17y | Array: EPICv2 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+! cg11945228, cg15845274, and cg21412456 missing in this file.
+ℹ tags: GPF (not at birth, yes in childhood), Cluster 11, and Cluster 15
+✔ Reading data [32.9s]
+Total n: 949 | 949 matched in selection file.
+
+
+> summary(dnam_data)
+  Sample_ID           cg00528572        cg05575921       cg11945228       cg10644885       cg22708087       cg25520701       cg01271805    
+ Length:7034        Min.   :0.04945   Min.   :0.5695   Min.   :0.0038   Min.   :0.4001   Min.   :0.4283   Min.   :0.5805   Min.   :0.6341  
+ Class :character   1st Qu.:0.17091   1st Qu.:0.8638   1st Qu.:0.0152   1st Qu.:0.8166   1st Qu.:0.8415   1st Qu.:0.9001   1st Qu.:0.8118  
+ Mode  :character   Median :0.21721   Median :0.9175   Median :0.0175   Median :0.8539   Median :0.8704   Median :0.9207   Median :0.8364  
+                    Mean   :0.22562   Mean   :0.8969   Mean   :0.0175   Mean   :0.8451   Mean   :0.8566   Mean   :0.9115   Mean   :0.8318  
+                    3rd Qu.:0.27217   3rd Qu.:0.9447   3rd Qu.:0.0198   3rd Qu.:0.8799   3rd Qu.:0.8904   3rd Qu.:0.9290   3rd Qu.:0.8550  
+                    Max.   :0.58572   Max.   :0.9763   Max.   :0.0403   Max.   :0.9440   Max.   :0.9589   Max.   :0.9645   Max.   :0.9018  
+                                                       NA's   :3567                                                                        
+   cg09989037       cg09157302        cg12448003        cg00635780        cg07184658        cg24353833        cg15845274       cg07876950    
+ Min.   :0.1445   Min.   :0.01180   Min.   :0.01593   Min.   :0.02732   Min.   :0.03846   Min.   :0.02396   Min.   :0.3154   Min.   :0.2864  
+ 1st Qu.:0.3518   1st Qu.:0.01819   1st Qu.:0.03227   1st Qu.:0.05451   1st Qu.:0.08021   1st Qu.:0.04874   1st Qu.:0.6266   1st Qu.:0.5123  
+ Median :0.3927   Median :0.01966   Median :0.03951   Median :0.06419   Median :0.10341   Median :0.05934   Median :0.7142   Median :0.5513  
+ Mean   :0.3953   Mean   :0.01990   Mean   :0.04156   Mean   :0.06661   Mean   :0.10707   Mean   :0.08139   Mean   :0.6852   Mean   :0.5520  
+ 3rd Qu.:0.4356   3rd Qu.:0.02128   3rd Qu.:0.04843   3rd Qu.:0.07566   3rd Qu.:0.12830   3rd Qu.:0.11836   3rd Qu.:0.7577   3rd Qu.:0.5911  
+ Max.   :0.6999   Max.   :0.09684   Max.   :0.22466   Max.   :0.22152   Max.   :0.46739   Max.   :0.29618   Max.   :0.9469   Max.   :0.8214  
+                                                                                                            NA's   :3567                     
+   cg22328396        cg08493959        cg15358431       cg26986443       cg21412456     cg06685590       cg17501712       cg16807679    
+ Min.   :0.04564   Min.   :0.09908   Min.   :0.6988   Min.   :0.7023   Min.   : NA    Min.   :0.4615   Min.   :0.5744   Min.   :0.7397  
+ 1st Qu.:0.15010   1st Qu.:0.52261   1st Qu.:0.8049   1st Qu.:0.8872   1st Qu.: NA    1st Qu.:0.9249   1st Qu.:0.9765   1st Qu.:0.8964  
+ Median :0.19736   Median :0.56910   Median :0.8209   Median :0.8994   Median : NA    Median :0.9314   Median :0.9799   Median :0.9087  
+ Mean   :0.21391   Mean   :0.56579   Mean   :0.8197   Mean   :0.8945   Mean   :NaN    Mean   :0.9301   Mean   :0.9772   Mean   :0.9059  
+ 3rd Qu.:0.26909   3rd Qu.:0.61088   3rd Qu.:0.8361   3rd Qu.:0.9078   3rd Qu.: NA    3rd Qu.:0.9373   3rd Qu.:0.9819   3rd Qu.:0.9188  
+ Max.   :0.59724   Max.   :0.80169   Max.   :0.9390   Max.   :0.9387   Max.   : NA    Max.   :0.9576   Max.   :0.9931   Max.   :0.9467  
+                                                                       NA's   :7034                                                     
