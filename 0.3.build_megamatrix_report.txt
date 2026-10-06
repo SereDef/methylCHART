@@ -1,0 +1,49 @@
+── Cohort: Generation R | Period: Birth | Array: 450k ───────────────────────────────────────────────────
+✔ Reading data [50.8s]
+ℹ 489 of 366764 target CpGs missing in this file.
+✔ Writing 1393 samples x 366275 CpGs.
+
+── Cohort: Generation R | Period: Age5 | Array: 450k ────────────────────────────────────────────────────
+✔ Reading data [22.8s]
+ℹ 489 of 366764 target CpGs missing in this file.
+✔ Writing 491 samples x 366275 CpGs.
+
+── Cohort: Generation R | Period: Age9 | Array: 450k ────────────────────────────────────────────────────
+✔ Reading data [19.7s]
+ℹ 489 of 366764 target CpGs missing in this file.
+✔ Writing 464 samples x 366275 CpGs.
+
+── Cohort: Generation R | Period: Birth | Array: EPICv1 ─────────────────────────────────────────────────
+✔ Reading data [1m 19.7s]
+ℹ 899 of 366764 target CpGs missing in this file.
+✔ Writing 1119 samples x 365865 CpGs.
+
+── Cohort: Generation R | Period: Birth | Array: EPICv2 ─────────────────────────────────────────────────
+✔ Reading data [9s]
+ℹ 6285 of 366764 target CpGs missing in this file.
+✔ Writing 77 samples x 360479 CpGs.
+
+── Cohort: Generation R | Period: Age5 | Array: EPICv2 ──────────────────────────────────────────────────
+✔ Reading data [56s]
+ℹ 6285 of 366764 target CpGs missing in this file.
+✔ Writing 684 samples x 360479 CpGs.
+
+── Cohort: Generation R | Period: Age9 | Array: EPICv2 ──────────────────────────────────────────────────
+✔ Reading data [56s]
+ℹ 6285 of 366764 target CpGs missing in this file.
+✔ Writing 770 samples x 360479 CpGs.
+
+── Cohort: Generation R | Period: Age13 | Array: EPICv2 ─────────────────────────────────────────────────
+✔ Reading data [1m 30.9s]
+ℹ 6285 of 366764 target CpGs missing in this file.
+✔ Writing 1196 samples x 360479 CpGs.
+
+── Cohort: Generation R | Period: Age17 | Array: EPICv2 ─────────────────────────────────────────────────
+✔ Reading data [1m 14.4s]
+ℹ 6285 of 366764 target CpGs missing in this file.
+✔ Writing 949 samples x 360479 CpGs.
+
+── Cohort: ALSPAC | Period: All | Array: All ────────────────────────────────────────────────────────────
+✔ Reading (and writing) data [35m]
+ℹ 973 of 366764 target CpGs missing in this file.
+ℹ Writing 6106 samples x 365791 CpGs - in 11 chunks.

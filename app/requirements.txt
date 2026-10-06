@@ -1,0 +1,5 @@
+polars
+plotnine
+scikit-learn
+shiny
+pyarrow

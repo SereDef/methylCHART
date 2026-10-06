@@ -21,7 +21,7 @@ target_cpgs = jsonlite::read_json('cpg_targets.json', simplifyVector = FALSE, nu
 
 array_color_map <- c("450k" = "#FFC3CB", "EPICv1" = "#58aaa1", "EPICv2" = "#1c4b75")
 
-plots_location <- './results/plots1'
+plots_location <- './results/plots'
 
 make_plots <- function(cpg, d = alldata, z = FALSE, outp = plots_location, 
                        array_color_map = c("450k" = "#FFC3CB", "EPICv1" = "#58aaa1", "EPICv2" = "#1c4b75")) {

@@ -4,17 +4,17 @@ from pcntoolkit import NormData, BLR, BsplineBasisFunction, LinearBasisFunction,
 seed = 73
 
 # Read input data
-cpg_data = pd.read_csv(f"~/methylCHART/data/DNAm_data.csv", index_col=0)
-cov_data = pd.read_csv(f"~/methylCHART/data/cov_data.csv", index_col=0)
+dnam = pd.read_csv(f"~/methylCHART/data/dnam_data.csv", index_col=0)
+pheno = pd.read_csv(f"~/methylCHART/data/pheno_data.csv", index_col=0)
 
-data = pd.merge(cov_data, cpg_data, on='Sample_ID')
+data = pd.merge(dnam, pheno, on='Sample_ID') # Should be already in the same order 
 
-cpg_with_na = cpg_data.columns[cpg_data.isna().any()].tolist()
-other_cpgs = list(set(cpg_data.columns) - set(['Sample_ID']+cpg_with_na))
+cpg_with_na = dnam.columns[dnam.isna().any()].tolist()
+other_cpgs = list(set(dnam.columns) - set(['Sample_ID']+cpg_with_na))
 
 # Specify modes structure
-covariates = ["Age"]
-batch_effects = ["sex", "Array"] # "IDC" "Period"celltype unilife 
+covariates = ["Age2"] # with varying gestational age 
+batch_effects = ["Sex", "Cohort", "Array"] # "IDC" "Period"celltype unilife 
 response_vars = other_cpgs
 
 # do not account for for idc, rather downstream in the z scores -- velocity and what not
@@ -34,16 +34,16 @@ norm_data = NormData.from_dataframe(
     response_vars=response_vars,
     remove_outliers=False,
     z_threshold=10,
-    
     # remove_Nan=True,
 )
 
 # Inspect
-norm_data.coords
-norm_data.data_vars
+# norm_data.coords
+# norm_data.data_vars
 
 # Split
-train, test = norm_data.train_test_split(0.5, random_state=seed)
+train, test = norm_data.train_test_split(splits=(0.7, 0.3), 
+    split_names=["train", "test"], random_state=seed)
 
 # Inspect
 df_train = train.to_dataframe()

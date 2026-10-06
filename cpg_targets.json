@@ -7,10 +7,6 @@
     "label": "Maternal smoking",
     "pheno": "smoke"
   },
-  "cg11945228": {
-    "label": "GPF (not at birth, yes in childhood)",
-    "pheno": "cbcl_tot"
-  },
   "cg10644885": {
     "label": "Asthma (not at birth, yes in childhood)",
     "pheno": "wheez"
@@ -31,59 +27,87 @@
     "label": "ADHD (ST3GAL3; yes birth, not childhood)",
     "pheno": "cbcl_adhd"
   },
-  "cg09157302": {
+  "cg06536614": {
+    "label": "ASDf_nc886 1",
+    "pheno": "cbcl_tot"
+  },
+  "cg04481923": {
+    "label": "ASDf_nc886 2",
+    "pheno": "cbcl_tot"
+  },
+  "cg18678645": {
+    "label": "ASDf_nc886 3",
+    "pheno": "cbcl_tot"
+  },
+  "cg25652859": {
+    "label": "SCZc_GNAS",
+    "pheno": "cbcl_tot"
+  },
+  "cg03836171": {
+    "label": "SCZm_C7orf50",
+    "pheno": "cbcl_tot"
+  },
+  "cg23248424": {
+    "label": "ADHDc_GFPT2",
+    "pheno": "cbcl_adhd"
+  },
+  "cg18283779": {
     "label": "Cluster 13",
     "pheno": {}
   },
-  "cg12448003": {
+  "cg13948987": {
     "label": "Cluster 1",
     "pheno": {}
   },
-  "cg00635780": {
+  "cg06817917": {
     "label": "Cluster 3",
     "pheno": {}
   },
-  "cg07184658": {
+  "cg22187630": {
     "label": "Cluster 10",
     "pheno": {}
   },
-  "cg24353833": {
+  "cg27471124": {
     "label": "Cluster 9",
     "pheno": {}
   },
-  "cg15845274": {
+  "cg02686357": {
     "label": "Cluster 11",
     "pheno": {}
   },
-  "cg07876950": {
+  "cg19354746": {
     "label": "Cluster 8",
     "pheno": {}
   },
-  "cg22328396": {
+  "cg06400065": {
     "label": "Cluster 12",
     "pheno": {}
   },
-  "cg08493959": {
+  "cg27179866": {
     "label": "Cluster 7",
     "pheno": {}
   },
-  "cg15358431": {
+  "cg03749154": {
     "label": "Cluster 5",
     "pheno": {}
   },
-  "cg26986443": {
+  "cg20684937": {
     "label": "Cluster 14",
     "pheno": {}
   },
-  "cg06685590": {
+  "cg16018729": {
+    "label": "Cluster 15",
+    "pheno": {}
+  },
+  "cg23273465": {
     "label": "Cluster 2",
     "pheno": {}
   },
-  "cg17501712": {
+  "cg10756475": {
     "label": "Cluster 4",
     "pheno": {}
   },
-  "cg16807679": {
+  "cg25712758": {
     "label": "Cluster 6",
     "pheno": {}
   }
