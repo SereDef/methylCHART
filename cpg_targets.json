@@ -5,7 +5,7 @@
   },
   "cg05575921": {
     "label": "Maternal smoking",
-    "pheno": "smoke"
+    "pheno": "mom_smoking"
   },
   "cg10644885": {
     "label": "Asthma (not at birth, yes in childhood)",

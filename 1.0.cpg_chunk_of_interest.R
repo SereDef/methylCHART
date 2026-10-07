@@ -29,7 +29,7 @@ cluster_rep_cpgs <- readRDS("~/MPSR/DNAm-clustering/metadata/CpG_metadata.rds") 
 
 target_cpgs <- c(list(
   cg00528572 = list(label='Maternal aging', pheno=c('mom_age', 'mom_age_bin')),  # Alex
-  cg05575921 = list(label='Maternal smoking', pheno=c('smoke')),  # holy grail
+  cg05575921 = list(label='Maternal smoking', pheno=c('mom_smoking')),  # holy grail
   
   # cg11945228 = list(label='GPF (not at birth, yes in childhood)', pheno=c('cbcl_tot')), 
   # -- removing becasue not in the shared cpg list
