@@ -13,8 +13,8 @@ model_desc = {
   'algorithm': 'BLR', # HBR
   'split': (0.7, 0.3), # or other
   'likelihood': 'SHASH',
-  'sample': 'multicohort',
-  'birth_age_model': 'Age' # Mean centered gestational age or Age for birth fixed at 0
+  'sample': 'multicohort', # 'GenR',
+  'birth_age_model': 'Age2' # Mean centered gestational age or Age for birth fixed at 0
 }
 
 model_name = f"{model_desc['algorithm']}_{model_desc['likelihood']}_{model_desc['sample']}_{model_desc['birth_age_model']}"

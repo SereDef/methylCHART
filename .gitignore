@@ -5,6 +5,16 @@
 
 data/
 .pcn_venv/
+pcntoolkit_resources/
 
-BLR_*
-results/warpedBLR
+__pycache__/
+
+results/*/model/
+results/*/results/
+resutls/*/more_plots/
+
+!results/*/results/statistics_*.csv
+
+# Local build output
+build/
+site/
