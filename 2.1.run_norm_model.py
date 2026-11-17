@@ -30,17 +30,22 @@ BASE = {
   'algorithm':   'BLR',         # 'BLR' | 'HBR' (only BLR implemented currently)
   'split':       (0.7, 0.3), 
   'sample':      'multicohort', # 'GenR' | 'ALSPAC' | 'multicohort'
-  'knot_method': None,   # None = quantile for Age/Age2, uniform for logAge2
+  # 'knot_method': None,   # None = quantile for Age/Age2, uniform for logAge2
   'cell_comp':   False,  # include UniLIFE fractions (linear, k-1)
-  'likelihood':  None,   # None = SHASH for beta, Gauss for Mval; or 'SHASH' | 'Gauss'
+  # 'likelihood':  None,   # None = SHASH for beta, Gauss for Mval; or 'SHASH' | 'Gauss'
   } 
 
 COMBOS = [
     {**BASE, 
     'data_scale': s, 
-    'age_transform': a }
+    'age_transform': a,
+    'likelihood': l,
+    'knot_method': k,
+    }
     for s in ('beta', 'Mval')
     for a in ('Age2', 'logAge2')
+    for l in ('SHASH', 'Gauss')
+    for k in ('quantile','uniform')
 ]
 
 idx = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get('SLURM_ARRAY_TASK_ID', 0))
@@ -66,8 +71,8 @@ likelihood  = model_desc['likelihood']  or ('SHASH' if model_desc['data_scale'] 
 
 model_name = "_".join([
   model_desc['algorithm'], 
-  likelihood,
   model_desc['data_scale'],
+  likelihood,
   age_raw, f"{knot_method}Knots",
   'uniLIFE' if model_desc['cell_comp'] else 'nocell',
   model_desc['sample']

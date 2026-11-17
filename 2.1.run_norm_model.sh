@@ -17,7 +17,7 @@
 # ============================================================================
 #SBATCH --job-name=methylCHART
 #SBATCH --partition=midas
-#SBATCH --array=0-3           # 4 combos (2 scales x 2 age forms)
+#SBATCH --array=0-15           # 16 combos (2 scales x 2 age forms x 2 likelihoods x 2 knots)
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8     # == number of worker processes
